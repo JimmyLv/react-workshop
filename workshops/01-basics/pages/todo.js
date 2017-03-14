@@ -50,7 +50,7 @@ class TodoMVC extends Component {
       <div>
         <h2>TodoList</h2>
 
-        <AddTodo create={(title) => this.addTodo(title)} />
+        <NewTodo addTodo={(title) => this.addTodo(title)} />
         <TodoList
           todos={todos.filter(FILTERS[filter])}
           remove={(id) => this.removeTodo(id)}
@@ -63,19 +63,11 @@ class TodoMVC extends Component {
   }
 }
 
-const AddTodo = ({ create }) => (
+const NewTodo = ({ addTodo }) => (
   <input
     type="text"
     placeholder="What wanna do?"
-    onKeyDown={(e) => {
-      if (e.keyCode !== ENTER_KEY) {
-        return
-      }
-
-      e.preventDefault()
-
-      create(e.target.value)
-    }}
+    onKeyDown={(e) => e.keyCode === ENTER_KEY && addTodo(e.target.value)}
   />
 )
 
