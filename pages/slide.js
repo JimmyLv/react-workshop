@@ -36,6 +36,9 @@ export default class extends React.Component {
             color: rgb(249, 38, 114);
             text-decoration: none;
           }
+          .center > p > img {
+            width: 100%;
+          }
           code {
             background: #e7e8e2;
             border-radius: 5px;
@@ -122,9 +125,12 @@ export default class extends React.Component {
           }`}
         </style>
       </Head>
-      <textarea style={{ visibility: 'hidden' }} id="source">
-        {`class: middle\r\n${this.props.slide}`}
-      </textarea>
+      <textarea
+        style={{ visibility: 'hidden' }}
+        id="source"
+        readOnly
+        defaultValue={`class: middle\r\n${this.props.slide}`}
+      />
       <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"/>
       <script>
         {'var slideshow = remark.create();'}

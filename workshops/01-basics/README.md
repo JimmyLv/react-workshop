@@ -203,9 +203,9 @@ Performance
 # Practice for Basics
 1. A Text input component pass all the passible events to DOM
 ```js
-<Text onClick={evt => console.log(evt)}
-<Text onFocus={evt => console.log(evt)}
-<Text onChange={evt => console.log(evt)}
+<Text onClick={evt => console.log(evt)} />
+<Text onFocus={evt => console.log(evt)} />
+<Text onChange={evt => console.log(evt)} />
 ...
 ```
 3. List Component from an object
@@ -286,7 +286,7 @@ class Text extends Component {
             value: evt.target.value
           })}
         />
-        <span>You have input: {value}</span>
+        <span>You have input: {this.state.value}</span>
       </div>
     )
   }
@@ -331,7 +331,7 @@ layout: true
 
 - DOM based operation
 - Context first
-- DOM as single source of truce *
+- DOM as single source of truth *
 
 ```html
 <script type="text/javascript">
@@ -349,7 +349,7 @@ layout: true
 
 - jQuery object based operation
 - jQuery as namespace
-- DOM as single source of truce *
+- DOM as single source of truth *
 
 ```html
 <input type="text" id="input" value="">
@@ -366,7 +366,7 @@ layout: true
 
 - Component based operation
 - Modules/Packages
-- Props data as single source of truce
+- Props data as single source of truth
 
 ```js
 (props) => (
@@ -411,12 +411,14 @@ layout: false
   import Flow from './Flow'
 
   const FirstFlow = <Flow condition={true} yes={'yes'} no={'no'}/>
-
-  const FirstFlow = <Flow condition={true} otherwise={'no'}>{'yes'}</Flow>
-
   ```
 
 2. Implement following Appointment UML Graph with Flow and basic types
+  ```js
+  <Appointment isAHuman={true} isBooked={false} /> // Conference
+  <Appointment isAHuman={false} isBooked={false} /> // You'r not a Human!
+  <Appointment isAHuman={true} isBooked={true} /> // Back to Book it.
+  ```
 
   ```ruby
    [Appointment]
@@ -425,9 +427,9 @@ layout: false
         |                                   |
        Yes                                  |
         |                                   |
-    <Is Booked?>--No-> [Back to Book it.]   |
+    <Is Booked?>-Yes-> [Back to Book it.]   |
         |                            \      |
-       Yes                            \     |
+        No                            \     |
         |                              \    |
     [Conference]                       [Reject]
   ```
