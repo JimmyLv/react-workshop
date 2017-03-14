@@ -88,7 +88,11 @@ const TodoList = ({ todos, toggle, remove }) => (
 const Filter = ({ filter, setFilter }) => (
   <ul>
     {Object.keys(FILTERS).map(type =>
-      <li key={type} style={{ color: filter === type && 'red' }} onClick={() => setFilter(type)}>{type}</li>
+      <li 
+        key={type} 
+        style={{ color: filter === type && 'red', display: 'inline-block', marginRight: 10 }} 
+        onClick={() => setFilter(type)}
+      >{type}</li>
     )}
   </ul>
 )
