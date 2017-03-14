@@ -1,28 +1,20 @@
 import { Component } from 'react'
 
 class Redux extends Component {
-  constructor(props) {
-    super(props)
-    this.state={
-      count: 0
-    }
-    this.timer()
-  }
+  state = { count: 0 }
 
-  timer() {
-    setInterval(
-      () => this.setState({
-        count: this.state.count++
-      }),
-      1000
-    )
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({ count: this.state.count + 1 })
+    }, 1000)
   }
 
   render() {
+    const { count } = this.state
     return (
       <div>
         <h1>Redux</h1>
-        <span>Count: {this.state.count}</span>
+        <span>Count: {count}</span>
       </div>
     )
   }

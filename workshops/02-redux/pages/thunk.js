@@ -1,5 +1,7 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider as Redux } from 'react-redux';
+import thunk from 'redux-thunk'
+
 
 const initialState = {}
 const reducer = (state = initialState, action) => {
@@ -8,7 +10,7 @@ const reducer = (state = initialState, action) => {
   }
   return state
 }
-const store = createStore(reducer, initialState)
+const store = createStore(reducer, initialState, applyMiddleware(thunk))
 
 export default props => (
   <Redux store={store}>
