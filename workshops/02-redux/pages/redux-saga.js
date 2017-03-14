@@ -8,7 +8,9 @@ const reducer = (state = initialState, action) => {
   return state
 }
 const sagaMiddleware = createSagaMiddleware()
-const store = createStore(reducer, applyMiddleware(thunk, sagaMiddleware), initialState)
+const store = createStore(reducer, initialState, applyMiddleware(thunk, sagaMiddleware))
+
+
 
 sagaMiddleware.run(rootSaga)
 

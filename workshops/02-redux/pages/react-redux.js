@@ -1,14 +1,16 @@
 import { createStore } from 'redux'
 import { Provider as Redux, connect } from 'react-redux'
 
+const INC = 'inc'
+
 const initialState = {
   count: 0
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'inc':
-      return { ...state, count: state.count + 1 }
+    case INC:
+      return { count: state.count + 1 }
     default:
       return state
   }
@@ -17,7 +19,7 @@ const reducer = (state = initialState, action) => {
 const store = createStore(reducer, initialState)
 
 setInterval(() => {
-  store.dispatch({ type: 'inc' })
+  store.dispatch({ type: INC })
 }, 1000)
 
 const Counter = connect(state => ({ count: state.count }))(props => (
